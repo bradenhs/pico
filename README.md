@@ -11,51 +11,56 @@
 
 2. *What was the output of the test you ran in (4)? How many directives were returned? How many rules do you think ran?*
 
-   Answer
+   It was a while ago that I did this but the test was successful. Two rules were needed to be run to produce the resulting
+   directives.
 
 3. *What was the output of the test you ran in (6)? How many directives were returned? How many rules do you think ran?*
 
-   Answer
+   The output again here consisted of a single directive. Only two rules needed to be run.
 
 4. *How do you account for the difference? Diagram the event flow within the pico (i.e. show the event flow from when the pico receives event to the directives being created).*
 
-   Answer
+   First an event is received. Then it is decoded. After that the resulting event object is processed and rules are
+   scheduled. Then they are evaluated and rescheduled as needed. Eventually a response is assembled and a directive
+   is outputted. Then the system wait for the next event.
 
 ### Part 2
 
 1. *What did you observe in (2) above? How do you explain it?*
 
-   Answer
+   The code seemed to perform as expected. I guess I wrote it correctly.
 
 2. *Would you say that the new rule in (3) is an event intermediary? If so, what kind? Justify your answer.*
 
-   Answer
+   Yes. Since it schedules an event for another rule to process it is an event intermediary. In KRL you can raise
+   events so I suppose it's a "risen" event?
 
 3. *How do your logs show that the find_long_trips rule works? Pick out specific lines and explain them.*
 
-   Answer
+   When an event triggers it will log out the relevant info it needs to.
 
 4. *How would you modify the system so that the long_trip is not hard coded without relying on an external service?*
 
-   Answer
+   I could have the request specify what the exact length of a long trip actually is.
 
 ### Part 3
 
 1. *Explain how the rule collect_trips and the function trips illustrate an event-query API.*
 
-   Answer
+   Since they query events they are an event query API.
 
 2. *Explain your strategy for finding trips that aren't long trips in your short_trips function.*
 
-   Answer
+   In pre I simply get the mileage from the event. Comparing this I can get an is_greater boolean value. If it's greater
+   I can send an event.
 
 3. *What happens if provides doesn't list the name of the trips function?*
 
-   Answer
+   Right now I don't think it processes that.
 
 4. *What happens if shares doesn't list it?*
 
-   Answer
+   In my currently implementation I think that it should work just fine.
 
 ## Multiple Picos Lab Questions
 
